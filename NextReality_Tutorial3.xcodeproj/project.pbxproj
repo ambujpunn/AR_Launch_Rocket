@@ -13,7 +13,7 @@
 		612D2A1420B5B3F0008287F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612D2A1220B5B3F0008287F2 /* Main.storyboard */; };
 		612D2A1620B5B3F2008287F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612D2A1520B5B3F2008287F2 /* Assets.xcassets */; };
 		612D2A1920B5B3F2008287F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612D2A1720B5B3F2008287F2 /* LaunchScreen.storyboard */; };
-		612D2A2120B5B75D008287F2 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D2A2020B5B75D008287F2 /* Rocket.swift */; };
+		612D2A2320B5BC41008287F2 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D2A2220B5BC41008287F2 /* Rocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		612D2A1520B5B3F2008287F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612D2A1820B5B3F2008287F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		612D2A1A20B5B3F2008287F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		612D2A2020B5B75D008287F2 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		612D2A2220B5BC41008287F2 /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 		612D2A0B20B5B3F0008287F2 /* NextReality_Tutorial3 */ = {
 			isa = PBXGroup;
 			children = (
+				612D2A2220B5BC41008287F2 /* Rocket.swift */,
 				612D2A0C20B5B3F0008287F2 /* AppDelegate.swift */,
 				612D2A0E20B5B3F0008287F2 /* art.scnassets */,
 				612D2A1020B5B3F0008287F2 /* ViewController.swift */,
@@ -65,7 +66,6 @@
 				612D2A1520B5B3F2008287F2 /* Assets.xcassets */,
 				612D2A1720B5B3F2008287F2 /* LaunchScreen.storyboard */,
 				612D2A1A20B5B3F2008287F2 /* Info.plist */,
-				612D2A2020B5B75D008287F2 /* Rocket.swift */,
 			);
 			path = NextReality_Tutorial3;
 			sourceTree = "<group>";
@@ -142,9 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612D2A2120B5B75D008287F2 /* Rocket.swift in Sources */,
 				612D2A1120B5B3F0008287F2 /* ViewController.swift in Sources */,
 				612D2A0D20B5B3F0008287F2 /* AppDelegate.swift in Sources */,
+				612D2A2320B5BC41008287F2 /* Rocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
