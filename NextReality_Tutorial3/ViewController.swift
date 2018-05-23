@@ -107,6 +107,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func addRocket(_ hitTest: ARHitTestResult) {
         let scene = SCNScene(named: "art.scnassets/rocket.scn")
         let rocketNode = Rocket(scene: scene!)
+        rocketNode.name = "Rocket"
         rocketNode.position = SCNVector3(hitTest.worldTransform.columns.3.x, hitTest.worldTransform.columns.3.y, hitTest.worldTransform.columns.3.z)
         
         sceneView.scene.rootNode.addChildNode(rocketNode)
