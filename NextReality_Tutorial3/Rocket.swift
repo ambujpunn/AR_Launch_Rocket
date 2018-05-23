@@ -31,7 +31,7 @@ class Rocket: SCNNode {
                 return
         }
         
-        let smoke = SCNParticleSystem(named: "smoke.scnp", inDirectory: nil)
+        let smoke = SCNParticleSystem(named: "art.scnassets/smoke.scnp", inDirectory: nil)
         smokeNode.addParticleSystem(smoke!)
         
         self.addChildNode(rocketNode)
