@@ -35,6 +35,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // 5.1
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         sceneView.addGestureRecognizer(gestureRecognizer)
+        
+        // 6.1
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        gestureRecognizer.require(toFail: doubleTapGestureRecognizer)
+        sceneView.addGestureRecognizer(doubleTapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,8 +113,34 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func addRocket(_ hitTest: ARHitTestResult) {
         let scene = SCNScene(named: "art.scnassets/rocket.scn")
         let rocketNode = Rocket(scene: scene!)
+        rocketNode.name = "Rocket"
         rocketNode.position = SCNVector3(hitTest.worldTransform.columns.3.x, hitTest.worldTransform.columns.3.y, hitTest.worldTransform.columns.3.z)
         
         sceneView.scene.rootNode.addChildNode(rocketNode)
+    }
+    
+    // 6.2
+    @objc func doubleTapped(gesture: UITapGestureRecognizer) {
+        // Get rocket and smoke nodes
+        guard let rocketNode = sceneView.scene.rootNode.childNode(withName: "Rocket", recursively: true) else {
+            fatalError("Rocket not found")
+        }
+        
+        guard let smokeNode = rocketNode.childNode(withName: "smokeNode", recursively: true) else {
+            fatalError("Smoke node not found")
+        }
+        
+        // 1. Remove the old smoke particle from the smoke node
+        smokeNode.removeAllParticleSystems()
+        
+        // 2. Add fire particle to smoke node
+        let fireParticle = SCNParticleSystem(named: "art.scnassets/fire.scnp", inDirectory: nil)
+        smokeNode.addParticleSystem(fireParticle!)
+        
+        // 3. Give rocket physics animation capabilities
+        rocketNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        rocketNode.physicsBody?.isAffectedByGravity = false
+        rocketNode.physicsBody?.damping = 0.0
+        rocketNode.physicsBody?.applyForce(SCNVector3(0,100,0), asImpulse: false)
     }
 }
