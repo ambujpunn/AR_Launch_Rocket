@@ -32,7 +32,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        // 5.1
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         sceneView.addGestureRecognizer(gestureRecognizer)
     }
@@ -86,13 +85,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
-    
-    // 5.2
+
     @objc func tapped(gesture: UITapGestureRecognizer) {
         // Get 2D position of touch event on screen
         let touchPosition = gesture.location(in: sceneView)
         
-        // 5.3
         // Translate those 2D points to 3D points using hitTest (existing plane)
         let hitTestResults = sceneView.hitTest(touchPosition, types: .existingPlane)
         
@@ -103,7 +100,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         addRocket(hitTest)
     }
     
-    // 5.4
     func addRocket(_ hitTest: ARHitTestResult) {
         let scene = SCNScene(named: "art.scnassets/rocket.scn")
         let rocketNode = Rocket(scene: scene!)
