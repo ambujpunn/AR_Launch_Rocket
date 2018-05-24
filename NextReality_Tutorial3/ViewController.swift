@@ -22,21 +22,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        // 4.2
         sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         
         // Create a new scene
-        // 4.1
         let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
         
-        // 5.1
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         sceneView.addGestureRecognizer(gestureRecognizer)
         
-        // 6.1
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         gestureRecognizer.require(toFail: doubleTapGestureRecognizer)
@@ -48,7 +44,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        // 4.3
         configuration.planeDetection = .horizontal
 
         // Run the view's session
@@ -93,12 +88,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    // 5.2
     @objc func tapped(gesture: UITapGestureRecognizer) {
         // Get 2D position of touch event on screen
         let touchPosition = gesture.location(in: sceneView)
         
-        // 5.3
         // Translate those 2D points to 3D points using hitTest (existing plane)
         let hitTestResults = sceneView.hitTest(touchPosition, types: .existingPlane)
         
@@ -109,7 +102,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         addRocket(hitTest)
     }
     
-    // 5.4
     func addRocket(_ hitTest: ARHitTestResult) {
         let scene = SCNScene(named: "art.scnassets/rocket.scn")
         let rocketNode = Rocket(scene: scene!)
@@ -119,7 +111,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(rocketNode)
     }
     
-    // 6.2
     @objc func doubleTapped(gesture: UITapGestureRecognizer) {
         // Get rocket and smoke nodes
         guard let rocketNode = sceneView.scene.rootNode.childNode(withName: "Rocket", recursively: true) else {
